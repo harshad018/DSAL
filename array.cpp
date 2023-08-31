@@ -33,10 +33,17 @@ int main(){
 
   for (int j=0; j<5;j++){
 
-    cout<<s[j].rn<<endl;
-    cout<<s[j].name<<endl;
-    cout<<s[j].sgpa<<endl;
-    
+    if ( s[j].sgpa > 8.00 ) {
+
+
+      cout<<s[j].rn<<endl;
+      cout<<s[j].name<<endl;
+      cout<<s[j].sgpa<<endl;
+      
+
+
+
+    }
 
 
 
