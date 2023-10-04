@@ -122,7 +122,7 @@ void SEIT::bsearch(){
 	int h = n-1;
 	int m;
 	
-	while  ( l<= h){
+	while  ( l <= h){
 	
 		m = floor((l+h)/2);
 		
