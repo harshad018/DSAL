@@ -4,7 +4,7 @@ using namespace std;
 
 class SEIT {
 
-	int n;
+
 	
 	struct student {
 	int rn;
@@ -16,12 +16,16 @@ class SEIT {
 	
 	
 	public:
+		int n;
 		void setdata();
 		void display();
 		void search();
 		void bubblesort();
 		void bsearch();
 		void insertsort();
+		void quickdisplay();
+		void quicksort(int l, int h);
+		int Partition( int l, int h);
 		
 };
 
@@ -122,7 +126,7 @@ void SEIT::bsearch(){
 	int h = n-1;
 	int m;
 	
-	while  ( l <= h){
+	while  ( l<= h){
 	
 		m = floor((l+h)/2);
 		
@@ -151,6 +155,76 @@ void SEIT::bsearch(){
 
 }
 
+void SEIT::quicksort(int l, int h){
+	
+	int j;
+	if ( l < h)
+	{
+	
+		j = Partition(l,h);
+		quicksort(l,j-1);
+		quicksort(j+1, h);
+	
+	}
+
+}
+
+int SEIT::Partition(int l, int h){
+
+	int i,j;
+	struct student pvt,temp;
+	pvt = s[l];
+	i = l + 1;
+	j = h;
+	
+	while ( i <= j){
+	
+		while ( s[i].sgpa <= pvt.sgpa){
+			i++;
+		}
+		while ( s[j].sgpa > pvt.sgpa){
+			j--;
+		}
+	
+		if ( i < j){
+			temp = s[i];
+			s[i] = s[j];
+			s[j] = temp;
+		
+		
+		}
+	
+	
+	}
+
+	s[l] = s[j];
+	s[j] = pvt;
+	
+	return j;
+
+
+
+
+}
+
+void SEIT::quickdisplay(){
+	int d;
+	cout<<"Enter no of toppers that you want to see"<<endl;
+	cin>>d;
+	cout<<"Names of the toppers: "<<endl;
+	for ( int i = n-1; i >= n-d; i--){
+	
+		cout<<"Roll no of the student: "<<s[i].rn<<endl;
+		cout<<"Name of the student: "<<s[i].name<<endl;
+		cout<<"sgpa of the student: "<<s[i].sgpa<<endl;
+	
+	
+	}
+
+
+
+
+}
 
 int main (){
 
@@ -165,7 +239,8 @@ int main (){
 		cout<<"1.Bubblesort for roll no"<<endl;
 		cout<<"2.binary search for Student name"<<endl;
 		cout<<"3.Linear search for sgpa of student"<<endl;
-		cout<<"4.exit"<<endl;
+		cout<<"4.Quicksort for the toppers list display"<<endl;
+		cout<<"5.exit"<<endl;
 		cin>>ch;
 		switch (ch){
 	
@@ -181,9 +256,11 @@ int main (){
 			case 3: a.search();
 				break;
 				
+			case 4: a.quicksort(0, a.n-1); a.quickdisplay();
+				break;
 		}
 	
-	}while ( ch < 4);
+	}while ( ch < 5);
 	
 	}
 
