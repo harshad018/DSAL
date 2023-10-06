@@ -46,12 +46,12 @@ void SEIT::setdata(){
 
 void SEIT::display(){
 
-
+	cout<<"Roll No: "<<"  "<<"Name: "<<"\t"<<"SGPA: "<<endl;
 	for ( int j=0; j<n; j++){
 	
-		cout<<"Roll no: "<<s[j].rn<<endl;
-		cout<<"name: "<<s[j].name<<endl;
-		cout<<"sgpa: "<<s[j].sgpa<<endl;
+		cout<<s[j].rn<<"\t"<<s[j].name<<"\t"<<"          "<<s[j].sgpa<<"\t"<<endl;
+		
+		
 	
 	}
 
