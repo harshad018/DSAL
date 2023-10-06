@@ -103,19 +103,29 @@ display();
 }
 
 void SEIT::insertsort(){
-	int key;
+       struct student  key;
 	int posi;
 
 	for ( int i = 1; i<n; i++){
 	
-		
+	  key  = s[i];
+	  posi = i;
+
+	  while ( posi > 0 && s[posi -1].name > key.name) {
+
+	    s[posi] = s[posi-1];
+	    posi = posi - 1;
+	    s[posi] = key;
+
+
+	  }
 	
 	
 	
 	}
 
 
-
+	display();
 }
 
 void SEIT::bsearch(){
@@ -147,11 +157,18 @@ void SEIT::bsearch(){
 		
 			 l = m +1;
 		}
+
+		else {
+
+		  cout<<"key is not found"<<endl;
+
+		}
+		
 	
 	
 	}
 	
-	cout<<"Key is not found"<<endl;
+        
 
 }
 
@@ -240,7 +257,8 @@ int main (){
 		cout<<"2.binary search for Student name"<<endl;
 		cout<<"3.Linear search for sgpa of student"<<endl;
 		cout<<"4.Quicksort for the toppers list display"<<endl;
-		cout<<"5.exit"<<endl;
+		cout<<"5.Insertsort the names of  students"<<endl;
+		cout<<"6.exit"<<endl;
 		cin>>ch;
 		switch (ch){
 	
@@ -258,12 +276,11 @@ int main (){
 				
 			case 4: a.quicksort(0, a.n-1); a.quickdisplay();
 				break;
+
+		case 5: a.insertsort();
+		  break;
 		}
 	
-	}while ( ch < 5);
+	}while ( ch < 6);
 	
 	}
-
-
-
-
