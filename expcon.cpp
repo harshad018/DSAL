@@ -20,6 +20,8 @@ public:
 	void strreve(char a[]);
 	int icp( char x);
 	int isp( char x);
+	int eval(char x, int s1, int s2);
+	
 
 };
 
@@ -227,10 +229,115 @@ int j=0;
 	
 	}
 
+int expcon::eval(char x, int s1, int s2){
+
+	
+	switch(x){
+	
+	case '+': return(s1+s2);
+	case '-': return(s1-s2);
+	case '*':return(s1*s2);
+	case '/':return(s1/s2);
+	case '^':return(s1^s2);
+	case '%':return(s1%s2);
+	
+	
+	}
+	
+
+}
+
+void expcon::preeval(){
+
+	stack s; int r;
+	
+	cout<<"Enter the prefix expression"<<endl;
+	cin>>pre;
+	
+	strreve(pre);
+	
+	for ( int i =0; i < strlen(pre); i++){
+		char x = pre[i];
+		if ( isalpha(x)){
+		
+			cout<<"Enter the value of"<<x<<endl;
+			cin>>x;
+			s.push(x);
+		
+		}
+		
+		else if ( isdigit(x)){
+		
+			s.push(x-48);
+		
+		}
+		
+		else {
+		
+		int s1 = s.pop();
+		int s2 = s.pop();
+		
+		r = eval(x,s1,s2);
+		s.push(r);
+	
+		}
+	
+	}
+
+
+	r = s.pop();
+	
+	cout<<"Result is: "<<r<<endl;
 
 
 
+}
 
+void expcon::posteval(){
+
+	stack s; int r;
+	
+	cout<<"Enter the prefix expression"<<endl;
+	cin>>pre;
+	
+	
+	
+	for ( int i =0; i < strlen(pre); i++){
+		char x = pre[i];
+		if ( isalpha(x)){
+		
+			cout<<"Enter the value of"<<x<<endl;
+			cin>>x;
+			s.push(x);
+		
+		}
+		
+		else if ( isdigit(x)){
+		
+			s.push(x-48);
+		
+		}
+		
+		else {
+		
+		int s2 = s.pop();
+		int s1 = s.pop();
+		
+		r = eval(x,s1,s2);
+		s.push(r);
+	
+		}
+	
+	}
+
+
+	r = s.pop();
+	
+	cout<<"Result is: "<<r<<endl;
+
+
+
+}
 
 
 
@@ -241,7 +348,7 @@ expcon e;
 		
 	do {
 		
-		cout<<"Enter the operation that you want to perform: 1.infix to prefix 2.infix to postfix 3.exit"<<endl;
+		cout<<"Enter the operation that you want to perform: 1.infix to prefix 2.infix to postfix 3.preeval 4.posteval 5.exit "<<endl;
 		cin>>ch;
 	
 		switch (ch){
@@ -252,13 +359,19 @@ expcon e;
 				
 			case 2: e.inf2post();
 				break;
+				
+			case 3: e.preeval();
+				break;
+				
+			case 4: e.posteval();
+				break;
 		
 		
 		}
 	
 	
 	
-	}while (  ch < 3);
+	}while (  ch < 5);
 
 
 
