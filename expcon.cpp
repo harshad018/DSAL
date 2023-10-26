@@ -12,7 +12,7 @@ class expcon{
 char inf[20],pre[20], post[20];
 
 public:
-	expcon();
+	
 	void inf2pre();
 	void inf2post();
 	void preeval();
@@ -23,10 +23,7 @@ public:
 
 };
 
-expcon::expcon(){
- 
 
- }
 
 void expcon::strreve(char a[]){
 
@@ -54,8 +51,7 @@ int expcon::icp(char x){
 
 	int q;
 	
-	switch (x){
-	
+	switch (x){		
 		case '+' : q = 1;
 			break;
 			
@@ -72,12 +68,10 @@ int expcon::icp(char x){
 			break;
 			
 		case '^': q =4;
+			break;			
+		case '(': q = 0;
 			break;
-			
 		
-	
-	
-	
 	}
 
 	return q;
@@ -88,8 +82,7 @@ int expcon::isp(char x){
 
 	int q;
 	
-	switch (x){
-	
+	switch (x){		
 		case '+' : q = 1;
 			break;
 			
@@ -108,8 +101,9 @@ int expcon::isp(char x){
 		case '^': q =4;
 			break;
 			
+		case '(': q = 0;
+			break;
 		
-	
 	
 	
 	
@@ -130,16 +124,12 @@ void expcon::inf2pre(){
 	
 	for ( int i =0; i< strlen(inf);i++){
 	
-		if ( inf[i] == '('){
-		
+		if ( inf[i] == '(')		
 			inf[i] = ')';
-		}
-		else if ( inf[i] == ')'){
-		
+		else if ( inf[i] == ')')		
 			inf[i] = '(';
 		}
-		}
-		cout<<inf<<endl;
+		
 		for ( int i = 0; i < strlen(inf); i++)
 		{
 		
@@ -152,50 +142,33 @@ void expcon::inf2pre(){
 			else if ( x == '('){
 			
 				s.push(x);
-				cout<<"s"<<endl;
-			}
-			
-			else if ( x == ')'){
-			
-				while ( (x = s.pop()) != '('){
+				
+			}			
+			else if (x==')')
+			{			
+				while((x=s.pop())!= '(')
+				{
 					pre[j++] = x;
 				
-				}
-				
-			}
-			
-			else{
-			
-				while (!s.isempty() && icp(x) <= isp(s.topdata())){
-				
-				pre[j++] = s.pop();
-				
-				}
-			
-				s.push(x);
-			
-			}
-		
-		
-		}
-	
-		while ( !s.isempty()){
-		
-			pre[j++] = s.pop();
-		
+				}				
+			}			
+			else{			
+				while (!s.isempty() && icp(x) <= isp(s.topdata()))
+				{				
+				pre[j++] = s.pop();				
+				}			
+				s.push(x);			
+			}		
+		}	
+		while ( !s.isempty())
+		{		
+			pre[j++] = s.pop();		
 		}
 	
 		pre[j] = '\0';
-		strreve(pre);
-		
-		cout<<"prefix of the given expression is: "<<pre<<endl;
-	
+		strreve(pre);		
+		cout<<"prefix of the given expression is: "<<pre<<endl;	
 	}
-
-
-
-
-
 
 void expcon::inf2post(){
 
