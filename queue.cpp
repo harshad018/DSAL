@@ -5,10 +5,8 @@ using namespace std;
 class Queue{
 
 	int a[5];
-
 	int front;
 	int rear;
-	
 	
 	public:
 		Queue();
@@ -19,7 +17,6 @@ class Queue{
 		void deletion();
 		void display();
 
-
 };
 
 Queue::Queue(){
@@ -29,16 +26,13 @@ Queue::Queue(){
 int Queue::isEmpty(){
 
 	if (  front == -1){
-	
 		cout<<"Queue is empty"<<endl;
 		return 1;
-	
 	}
 	
 	else{
 		cout<<"Queue is not empty"<<endl;
 		return 0;
-	
 	}
 
 
@@ -47,12 +41,7 @@ int Queue::isEmpty(){
 void Queue::enqueue(int x){
 
 	 if ( isFull()){
-	 
-	 	cout<<"The queue is full, so can't perform this operation"<<endl;
-	 
-	 	//a[front + 1] = x;
-	 	//front++;
-	 	//rear = front;
+	 cout<<"The queue is full, so can't perform this operation"<<endl;
 	 
 	 }
 	 else {
@@ -60,24 +49,17 @@ void Queue::enqueue(int x){
 	 	if ( front == -1){
 	 	front = rear = 0;
 	 	
-	 	
-	 
-	 	
 	 	}
 	 	
 	 	else {
 	 	
-	 	
 	 	rear = (rear +1)%5;
 	 	}
-	 	//a[rear +1] = x;
-	 	//rear++;
+	 	
 	 a[rear] = x;
 	 }
 
-
 }
-
 
 void Queue::dequeue(){
 
@@ -97,40 +79,27 @@ void Queue::dequeue(){
 		cout<<temp<<endl;
 	}
 
-
-
-
-
 }
 
 int Queue::isFull(){
 
 	if ( front == ( rear +1)%5) {
 	
-	
 	cout<<"Queue is full"<<endl;
 	return 1;
-	
 	}
-	
 	else {
-	
 		cout<<"Queue is not full"<<endl;
 		return 0;
 	}
-
 
 }
 
 void Queue::display(){
 
-	for ( int i= front; i != rear; i = ((i+1)%5)){
-		
+	for ( int i= front; i != rear; i = ((i+1)%5)){	
 		cout<<a[i]<<endl;
-		
-	
 	}
-
 	cout<<a[rear]<<endl;
 }
 
@@ -161,34 +130,9 @@ do {
 			
 		case 5:q.display();
 			break;
-			
-		
-	
-	
-	
 	
 	}
 
-
-
-
-
-
 }while ( ch < 6);
-
-
-//q.isEmpty();
-//q.enqueue(1);
-//q.enqueue(2);
-//q.enqueue(3);
-//q.enqueue(4);
-//q.dequeue();
-//q.isFull();
-//q.display();
-//q.isEmpty();
-
-
-
-
 
 }
