@@ -79,29 +79,34 @@ tnode* bst::insert( tnode *p, int key){
 }
 
 void bst::search( tnode *p,int key){
-	if ( p -> info != NULL){
+	
 	if ( p -> info == key ){
 		cout<<"Key Found: "<<p -> info<<endl;
 		flag = 1;
 	}
 	else if ( key < p -> info ){
-			search( p -> lc , key);
+	
+			if ( p -> lc != NULL){
+			search( p -> lc , key);}
+			else{
+			
+			cout<<"Key not found"<<endl;
+			}
 		
 		}
 		else if ( key > p -> info ){
-		
-			search( p -> rc, key);
+			if ( p -> rc != NULL){
+			search( p -> rc, key);}
+			else{
+			cout<<"Key not found"<<endl;
+			}
 		
 		}
 	
 		
 	
-	}
-	else {
 	
-	cout<<"Key not found"<<endl;
-	}
-
+	
 	
 
 
@@ -165,12 +170,7 @@ b.insert(b.root,4);
 b.insert(b.root,4);
 
 b.inorder(b.root);
-b.search(b.root, 200);
-
-
-
-
-
+b.search(b.root, 50);
 
 
 }
