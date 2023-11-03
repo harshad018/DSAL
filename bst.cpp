@@ -20,9 +20,10 @@ class bst{
 	
 	
 	public:
+		int flag = 0;
 		tnode *root;
 		bst(){ root = NULL;}
-		//tnode* search(int key);
+		void search(tnode* p,int key);
 		tnode* insert(tnode* p, int key);
 		tnode* newnode(int z);
 		tnode* deletenode( int key);
@@ -77,17 +78,34 @@ tnode* bst::insert( tnode *p, int key){
 
 }
 
-/*tnode* bst::search ( int key){
-
-	int mid;
+void bst::search( tnode *p,int key){
+	if ( p -> info != NULL){
+	if ( p -> info == key ){
+		cout<<"Key Found: "<<p -> info<<endl;
+		flag = 1;
+	}
+	else if ( key < p -> info ){
+			search( p -> lc , key);
+		
+		}
+		else if ( key > p -> info ){
+		
+			search( p -> rc, key);
+		
+		}
 	
-	mid = 
+		
+	
+	}
+	else {
+	
+	cout<<"Key not found"<<endl;
+	}
+
+	
 
 
-
-
-
-}*/
+}
 
 void bst::inorder(tnode *p){
 
@@ -145,10 +163,9 @@ b.insert(b.root,19);
 b.insert(b.root,1);
 b.insert(b.root,4);
 b.insert(b.root,4);
-int list[];
 
-b.search
 b.inorder(b.root);
+b.search(b.root, 200);
 
 
 
