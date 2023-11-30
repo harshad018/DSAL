@@ -10,12 +10,12 @@ class Assign8
 	//int v =7;
 	
 	int G[7][7] = {{0,2,1,3,0,0,0},
-				 {2,0,0,0,0,0,4},
-				 {1,0,0,0,5,8,6},
-				 {3,0,0,0,0,4,0},
-				 {0,0,5,0,0,7,9},
-				 {0,0,8,4,7,0,0},
-				 {0,4,6,0,9,0,0}};
+		       {2,0,0,0,0,0,4},
+		       {1,0,0,0,5,8,6},
+		       {3,0,0,0,0,4,0},
+		       {0,0,5,0,0,7,9},
+		       {0,0,8,4,7,0,0},
+		       {0,4,6,0,9,0,0}};
 	void display();
 	void dijkstra();
 	int selectmin(int a[],int b[]);
@@ -71,9 +71,9 @@ void Assign8 :: dijkstra()
 		visited[s]=1;
 		for(int i=0;i<v;i++)
 		{
-			if(G[s][i]!=0 && visited[i]==0 && G[s][i]<dist[i])
+			if(G[s][i]!=0 && visited[i]==0 && dist[s]+G[s][i]<dist[i])
 			{
-				dist[i] = G[s][i];
+				dist[i] =dist[s]+ G[s][i];
 				parent[i] = s;
 			}
 			
